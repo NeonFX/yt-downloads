@@ -6,7 +6,7 @@ Script em Python para baixar vídeos e áudios do YouTube em alta qualidade.
 
 - Python 3.7+
 - [yt-dlp](https://github.com/yt-dlp/yt-dlp)
-- [ffmpeg](https://ffmpeg.org/download.html) _(opcional, apenas para converter áudio para M4A)_
+- [ffmpeg](https://ffmpeg.org/download.html) _(recomendado para melhor qualidade)_
 
 ## Instalação
 
@@ -18,7 +18,7 @@ pip install yt-dlp
 python -m pip install yt-dlp
 ```
 
-Para o modo áudio em M4A, instale o ffmpeg:
+Instale o ffmpeg para máxima qualidade:
 
 ```bash
 # Windows (Chocolatey)
@@ -80,8 +80,10 @@ Projetos-Git/
 
 ## Notas
 
-- **Sem ffmpeg**: o áudio é baixado no formato original (WebM/Opus)
-- **Com ffmpeg**: pode converter para M4A/AAC
-- **Vídeo**: sempre baixa em MP4 com a melhor qualidade disponível
+| Modo | Com ffmpeg | Sem ffmpeg |
+|------|-----------|------------|
+| Vídeo + Áudio | Máxima qualidade (junta vídeo + áudio separados) | Qualidade inferior (único arquivo) |
+| Apenas Áudio | Conversão para M4A/AAC disponível | Formato original WebM/Opus |
+
 - A pasta de destino é criada automaticamente se não existir
 - Pressione `Ctrl+C` a qualquer momento para cancelar

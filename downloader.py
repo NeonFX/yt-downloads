@@ -9,6 +9,8 @@ def check_ffmpeg():
 
 
 def download_video(url, audio_only=False, audio_format="webm", output_path="."):
+    has_ffmpeg = check_ffmpeg()
+
     if audio_only:
         ydl_opts = {
             'format': 'bestaudio/best',
@@ -20,10 +22,15 @@ def download_video(url, audio_only=False, audio_format="webm", output_path="."):
                 'preferredcodec': 'm4a',
                 'preferredquality': '0',
             }]
-    else:
+    elif has_ffmpeg:
         ydl_opts = {
             'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio/best',
             'merge_output_format': 'mp4',
+            'outtmpl': f'{output_path}/%(title)s.%(ext)s',
+        }
+    else:
+        ydl_opts = {
+            'format': 'best[ext=mp4]/best',
             'outtmpl': f'{output_path}/%(title)s.%(ext)s',
         }
 
